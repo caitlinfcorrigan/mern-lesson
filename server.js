@@ -3,6 +3,9 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
+require('dotenv').config();
+require('./config/database')
+
 const app = express();
 
 app.use(logger('dev'));
@@ -21,5 +24,5 @@ app.get('/*', function (req, res) {
 // Set port to 3001 so React can use 3000
 const port = process.env.PORT || 3001;
 app.listen(port, function() {
-    console.log(`Exp app listening on ${port}`)
+    console.log(`Express app listening on ${port}`)
 });
