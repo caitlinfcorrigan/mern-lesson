@@ -9,7 +9,7 @@ import NavBar from '../../components/NavBar';
 
 export default function App() {
   // States
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   // Display
   return (
