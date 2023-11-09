@@ -3,6 +3,7 @@ require('dotenv').config();
 require('./config/database');
 
 // Require Mongoose models
+const User = require('./models/user');
 
 
 // Local variables for handling retrieved docs
