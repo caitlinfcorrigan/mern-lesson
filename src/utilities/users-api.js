@@ -16,3 +16,19 @@ export async function signUp(userData) {
         throw new Error('Invalid Sign Up');
     }
 }
+
+export async function login(credentials) {
+    // Use Fetch to send req through the Express router
+    const res = await fetch(BASE_URL + "/login", {
+        method: 'POST',
+        // MIME type of application/json
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(credentials)
+    });
+    // Once you have a response:
+    if (res.ok) {
+        return res.json()
+    } else {
+        throw new Error('Invalid Credentials');
+    }
+}

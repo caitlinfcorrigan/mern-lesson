@@ -1,3 +1,4 @@
+// Use for testing CRUD using Node (without the app)
 // Connect to the database
 require('dotenv').config();
 require('./config/database');
