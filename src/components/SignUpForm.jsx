@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { signUp } from '../utilities/users-service';
 
 export default class SignUpForm extends Component {
     // Set state using class field approach
@@ -15,9 +16,19 @@ export default class SignUpForm extends Component {
             error: ''
         });
     };
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        alert(JSON.stringify(this.state));
+        // Try submitting a copy of state (minus .confirm & .error)
+        try {
+            const formData = {...this.state};
+            delete formData.error;
+            delete formData.confirm;
+            // The signup service method puts the user object in the payload then resolves it as a JSON Web Token (JSWT)
+            const user = await signUp(formData);
+            console.log(user);
+        } catch {
+            this.setState({ error: 'Sign Up Failed - Try Again' });
+        }
     }
     render() {
         const disable = this.state.password !== this.state.confirm;

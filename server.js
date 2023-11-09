@@ -16,6 +16,10 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
+// API routes before the "catch all"
+// Require & mount router in a single line (prev used 2)
+app.use('/api/users', require('./routes/api/users'));
+
 // "Catch all" GET route
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
