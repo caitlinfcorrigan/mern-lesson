@@ -26,7 +26,7 @@ export default function App() {
       </>
 
       : 
-      < AuthPage /> }
+      < AuthPage setUser={ setUser} /> }
     </main>
   );
 }

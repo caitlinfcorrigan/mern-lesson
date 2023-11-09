@@ -19,7 +19,7 @@ export async function signUp(userData) {
 
 export async function login(credentials) {
     // Use Fetch to send req through the Express router
-    const res = await fetch(BASE_URL + "/login", {
+    const res = await fetch(`${BASE_URL}/login`, {
         method: 'POST',
         // MIME type of application/json
         headers: {'Content-Type': 'application/json'},
