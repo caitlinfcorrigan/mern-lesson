@@ -25,7 +25,8 @@ export default class SignUpForm extends Component {
             delete formData.confirm;
             // The signup service method puts the user object in the payload then resolves it as a JSON Web Token (JSWT)
             const user = await signUp(formData);
-            console.log(user);
+            // Class-based syntax for handling the setUser prop
+            this.props.setUser(user);
         } catch {
             this.setState({ error: 'Sign Up Failed - Try Again' });
         }
