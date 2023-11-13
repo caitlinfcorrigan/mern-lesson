@@ -2,12 +2,16 @@ const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const SALT_ROUNDS = 6;
-
 module.exports = {
     create,
-    login
+    login,
+    checkToken
 }
+
+function checkToken(req,res) {
+    console.log('req.user', req.user);
+    res.json(res.exp);
+} 
 
 async function create(req, res) {
     try {

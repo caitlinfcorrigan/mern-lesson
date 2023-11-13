@@ -16,6 +16,9 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
+// MW to verify user's token
+app.use(require('./config/checkToken'));
+
 // Set port to 3001 so React can use 3000
 const port = process.env.PORT || 3001;
 

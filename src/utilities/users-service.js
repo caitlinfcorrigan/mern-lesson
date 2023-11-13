@@ -9,6 +9,7 @@ export async function signUp(userData) {
 
 export async function login(credentials) {
     const token = await usersAPI.login(credentials);
+    localStorage.setItem('token', token);
     return token;    
 }
 
@@ -34,6 +35,13 @@ export function getUser() {
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
 
+// Log out (delete token)
 export function logOut() {
     localStorage.removeItem('token');
+}
+
+// Allow user to check token expiration
+export function checkToken() {
+    return usersAPI.checkToken()
+    .then(dateStr => new Date(dateStr));
 }
